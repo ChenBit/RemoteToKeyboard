@@ -12,13 +12,14 @@ if not joysticks:
 for i, j in enumerate(joysticks):
     print(f"{i+1}. {j.get_name()}")
 
-# 用户选择设备
-selection = int(input("请选择编号: ")) - 1
+# Device selection
+selection = int(input("Please Input The Number of The Joystick: ")) - 1
 joystick = joysticks[selection]
 joystick.init()
 
-# 主循环
-pyautogui.FAILSAFE = False
+# Main loop
+print(f"Connected: {joystick.get_name()}")
+pyautogui.FAILSAFE = False  # Disable fail-safe to prevent mouse movement from stopping the script.
 while True:
     pygame.event.pump()
     channel1 = joystick.get_axis(0) * 100
